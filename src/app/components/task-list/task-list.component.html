@@ -1,0 +1,17 @@
+<div class="task-list">
+  <button class="task-list__add-button" (click)="addTask()">
+    Добавить задачу
+  </button>
+
+  <div *ngIf="(tasks$ | async)?.length === 0" class="task-list__empty">
+    Нет задач для отображения
+  </div>
+
+  <div *ngFor="let task of tasks$ | async" class="task-list__task-list-item">
+    <app-task-list-item
+      [task]="task"
+      (deleteTask)="deleteTask($event)"
+      (editTask)="editTask($event)"
+    ></app-task-list-item>
+  </div>
+</div>

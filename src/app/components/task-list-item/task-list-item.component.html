@@ -1,0 +1,10 @@
+<div class="task-item" [ngClass]="getTaskClass()">
+    <span class="task-item__title">
+      {{ task.title }} - {{ task.dueDate | date: 'shortDate' }}
+    </span>
+    <div class="task-item__controls">
+      <button (click)="onEdit()">🖉</button>
+      <button (click)="onDelete()">🗑</button>
+    </div>
+  </div>
+  

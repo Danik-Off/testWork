@@ -1,0 +1,49 @@
+<form class="task-form" [formGroup]="taskForm" (ngSubmit)="saveTask()">
+  <label class="task-form__label">
+    Заголовок:
+    <input class="task-form__input" formControlName="title" required />
+  </label>
+  <label class="task-form__label">
+    Описание:
+    <textarea
+      class="task-form__textarea"
+      formControlName="description"
+    ></textarea>
+  </label>
+  <label class="task-form__label">
+    Срок:
+    <input
+      type="date"
+      class="task-form__date"
+      formControlName="dueDate"
+      required
+    />
+  </label>
+
+  <div class="task-form__buttons">
+    <button
+      type="button"
+      class="task-form__button task-form__button--cancel"
+      (click)="close()"
+    >
+      Отмена
+    </button>
+    <button type="submit" class="task-form__button">Сохранить</button>
+    <button
+      *ngIf="task.id !== 0 && !task.completed"
+      type="button"
+      class="task-form__button task-form__button--close"
+      (click)="closeTask()"
+    >
+      Закрыть задачу
+    </button>
+    <button
+      *ngIf="task.completed"
+      type="button"
+      class="task-form__button task-form__button--close"
+      (click)="openTask()"
+    >
+      открыть задачу
+    </button>
+  </div>
+</form>

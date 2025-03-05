@@ -1,0 +1,54 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    flex-grow: 1;
+    word-wrap: break-word;
+  }
+
+  &__button {
+    background-color: transparent;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &--edit {
+      color: #4caf50;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    &--delete {
+      color: #f44336;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  }
+
+  &--warning {
+    background-color: #fff3cd;
+  }
+
+  &--expired {
+    background-color: red;
+  }
+  &--completed {
+    background-color: green;
+  }
+}
