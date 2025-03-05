@@ -7,11 +7,17 @@
     Нет задач для отображения
   </div>
 
-  <div *ngFor="let task of tasks$ | async" class="task-list__task-list-item">
-    <app-task-list-item
-      [task]="task"
-      (deleteTask)="deleteTask($event)"
-      (editTask)="editTask($event)"
-    ></app-task-list-item>
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div
+      *ngFor="let task of tasks$ | async"
+      class="task-list__task-list-item"
+      cdkDrag
+    >
+      <app-task-list-item
+        [task]="task"
+        (deleteTask)="deleteTask($event)"
+        (editTask)="editTask($event)"
+      ></app-task-list-item>
+    </div>
   </div>
 </div>

@@ -5,10 +5,11 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { TaskListItemComponent } from '../task-list-item/task-list-item.component';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-list',
-  imports: [CommonModule, TaskListItemComponent],
+  imports: [CommonModule, TaskListItemComponent, DragDropModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss',
 })
@@ -32,5 +33,12 @@ export class TaskListComponent {
 
   public deleteTask(id: number): void {
     this.taskService.deleteTask(id);
+  }
+
+  public drop(event: CdkDragDrop<Task[]>): void {
+    const previousIndex = event.previousIndex;
+    const currentIndex = event.currentIndex;
+    const direction = currentIndex - previousIndex;
+    this.taskService.moveTask(previousIndex, direction);
   }
 }
